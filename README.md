@@ -1,4 +1,9 @@
-# 深度学习环境配置 + 内网穿透
+[TOC]
+
+
+
+# 一、深度学习环境配置
+
 ## 1. 制作启动盘
 
 1. ubuntu镜像下载
@@ -9,7 +14,7 @@ https://ubuntu.com/download/desktop
 
 使用软件制作启动盘
 
-## 安装nvidia驱动
+## 2.安装nvidia驱动
 
 1. 查看显卡型号
 
@@ -87,7 +92,7 @@ sudo ./NVIDIA-Linux-x86_64-450.80.02.run -no-x-check -no-nouveau-check -no-openg
 nvidia-smi
 ```
 
-# frp内网穿透
+# 二、frp内网穿透
 
 ## 1. 客户端
 

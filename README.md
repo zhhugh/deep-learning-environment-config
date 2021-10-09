@@ -1,4 +1,4 @@
-# 深度学习环境配置
+# 深度学习环境配置 + 内网穿透
 ## 1. 制作启动盘
 
 1. ubuntu镜像下载
@@ -7,11 +7,13 @@ https://ubuntu.com/download/desktop
 
 2. 软件制作
 
+使用软件制作启动盘
+
 ## 安装nvidia驱动
 
 1. 查看显卡型号
 
-```
+```bash
 lspci | grep -i nvidia
 ```
 
@@ -21,26 +23,26 @@ https://www.nvidia.cn/geforce/drivers/
 
 3. 卸载ubuntu自带驱动
 
-```
+```bash
 sudo apt purge nvidia*
 ```
 
 4. 禁用自带的nouveau nvidia驱动
 
-```
+```bash
 sudo vim /etc/modprobe.d/blacklist.conf
 ```
 
 在文件最后添加：
 
-```
+```bash
 blacklist nouveau  
 options nouveau modeset=0 
 ```
 
 5. 更新
 
-```
+```bash
 sudo update-initramfs -u
 ```
 
@@ -52,7 +54,7 @@ sudo reboot
 
 7. 重启后查看是否已经将自带的驱动屏蔽了，输入以下代码， 没有输出则代表屏蔽成功了
 
-```
+```bash
 lsmod | grep nouveau
 ```
 
@@ -91,11 +93,11 @@ nvidia-smi
 
 a. 启动服务
 
-```
+```bash
 vim frps/frpc.int
 ```
 
-```vim
+```bash
 [common]
 server_addr = 101.132.40.112 #服务器地址
 server_port = 7001 # 服务器开放的端口
@@ -114,9 +116,9 @@ b. 开机自启动
 sudo vim /lib/systemd/system/frpc.service
 ```
 
-填入一下内容：
+填入以下内容：
 
-```
+```bash
 [Unit]
 Description=frpc
 After=network.target syslog.target
@@ -130,5 +132,16 @@ ExecStart=/home/zhouhan/frps/frpc -c /home/zhouhan/frps/frpc.ini
 WantedBy=multi-user.target
 ```
 
+c. 使用systemctl实现开机自启动
 
+```bash
+sudo systemctl enable frpc
+sudo systemctl start frpc
+```
+
+d.查看服务是否启动
+
+```bash
+sudo systemctl status frpc
+```
 

@@ -2,7 +2,9 @@
 
 
 
-# 一、深度学习环境配置
+# 深度学习环境配置
+
+## 安装系统
 
 ## 1. 制作启动盘
 
@@ -92,7 +94,7 @@ sudo ./NVIDIA-Linux-x86_64-450.80.02.run -no-x-check -no-nouveau-check -no-openg
 nvidia-smi
 ```
 
-# 二、frp内网穿透
+# frp内网穿透
 
 ## 1. 客户端 
 
@@ -179,3 +181,40 @@ channels:
 ssl_verify: true
 ```
 
+
+
+# pip
+
+## pip换源
+
+- 安装
+
+  ```
+  pip install pqi
+  ```
+
+- 列举所有支持的pip源
+
+  ```
+  pqi ls
+  ```
+
+- 换源
+
+  ```
+  pqi use <name>
+  ```
+
+- 添加新的pip源
+
+  ```
+  pqi add ustc https://mirrors.ustc.edu.cn/pypi/web/simple
+  ```
+
+- 移除pip源
+
+  ```
+  pqi remove pypi
+  ```
+
+  

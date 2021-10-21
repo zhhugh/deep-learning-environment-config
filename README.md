@@ -150,3 +150,32 @@ d.查看服务是否启动
 sudo systemctl status frpc
 ```
 
+
+
+# Conda
+
+## conda换源
+
+```bash
+vim ~/.condarc
+#清华源
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+ssl_verify: true
+#中科大源
+channels:
+  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+  - https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+ssl_verify: true
+#上交大源
+channels:
+  - https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/free/
+  - https://mirrors.sjtug.sjtu.edu.cn/anaconda/cloud/conda-forge/
+ssl_verify: true
+```
+

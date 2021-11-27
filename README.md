@@ -1,7 +1,3 @@
-[TOC]
-
-
-
 # 深度学习环境配置
 
 ## 安装系统
@@ -218,3 +214,72 @@ ssl_verify: true
   ```
 
   
+
+## tensorflow 部署
+
+### 1. 安装英伟达驱动
+
+```
+wget https://www.nvidia.cn/geforce/drivers/
+```
+
+### 2. 查看tensorflow需要的cuda版本
+
+```
+https://www.tensorflow.org/install/source#gpu
+```
+
+```
+sh 安装包
+```
+
+```
+export PATH=/usr/local/cuda-11.1/bin:$PATH  
+export LD_LIBRARY_PATH=/usr/local/cuda11.1/lib64:$LD_LIBRARY_PATH
+```
+
+```
+source ~/.bashrc
+```
+
+### 3. 安装cuda（cudatoolkit）
+
+nvidia-smi 和 nvcc的区别：nvidia-smi是管理和监控gpu的工具，nvcc是cuda的编译器。nvidia-smi 显示的cuda版本：driver-api对应的cuda版本，nvcc -v 显示的是runtime-api。nvcc是与CUDA Toolkit一起安装的CUDA compiler-driver tool，它只知道它自身构建时的CUDA runtime版本，并不知道安装了什么版本的GPU driver，甚至不知道是否安装了GPU driver。
+
+结论：通常，**driver api的版本能向下兼容runtime api的版本**，即 **nvidia-smi 显示的版本大于nvcc --version 的版本通常不会出现大问题。**
+
+所以，保证nvidia-smi的版本号 >= nvcc -V的版本号即可
+
+#### 3.1 查看能够安装的cuda最高版本
+
+```
+nvidia-smi
+```
+
+#### 3.2 安装cudatoolkit
+
+```
+wget https://developer.download.nvidia.com/compute/cuda/11.2.0/local_installers/cuda_11.2.0_460.27.04_linux.run
+sudo sh cuda_11.2.0_460.27.04_linux.run
+```
+
+### 4. 下载对应的cudnn版本
+
+```
+https://developer.nvidia.com/rdp/cudnn-archive
+```
+
+解压，拷贝到对应路径（之前设置过环境变量的路径）
+
+```
+tar -xzvf 文件名
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include 
+sudo cp cuda/lib64/* /usr/local/cuda/lib64
+```
+
+```
+nvcc -V 
+```
+
+### 5. pip 或者 conda安装tensorflow
+

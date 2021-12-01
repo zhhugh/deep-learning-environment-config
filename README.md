@@ -2,7 +2,7 @@
 
 ## 安装系统
 
-## 1. 制作启动盘
+### 1. 制作启动盘
 
 1. ubuntu镜像下载
 
@@ -12,7 +12,7 @@ https://ubuntu.com/download/desktop
 
 使用软件制作启动盘
 
-## 2.安装nvidia驱动
+### 2.安装nvidia驱动
 
 1. 查看显卡型号
 
@@ -177,8 +177,6 @@ channels:
 ssl_verify: true
 ```
 
-
-
 # pip
 
 ## pip换源
@@ -215,7 +213,7 @@ ssl_verify: true
 
   
 
-## tensorflow 部署
+# tensorflow 部署
 
 ### 1. 安装英伟达驱动
 

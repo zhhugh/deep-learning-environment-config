@@ -22,7 +22,11 @@ lspci | grep -i nvidia
 
 2. 进入nvidia官网下载驱动
 
+两个链接均可
+
 https://www.nvidia.cn/geforce/drivers/
+
+https://www.nvidia.cn/Download/index.aspx?lang=cn
 
 3. 卸载ubuntu自带驱动
 
@@ -68,6 +72,9 @@ sudo apt install gcc
 sudo apt install make
 # 或者直接执行
 sudo apt install gcc & make # 同时安装gcc和make，不用一条一条执行了，效果和上面两条命令相同
+# 最好安装一下下面的工具和依赖
+sudo apt-get install build-essential cmake
+sudo apt-get install libboost-all-dev
 ```
 
 9. 开始安装
@@ -92,12 +99,12 @@ nvidia-smi
 
 # frp内网穿透
 
-## 1. 客户端 
+## 1. 客户端
 
 a. 启动服务
 
 ```bash
-vim frps/frpc.int
+vim frps/frpc.ini
 ```
 
 ```bash
@@ -148,8 +155,6 @@ d.查看服务是否启动
 sudo systemctl status frpc
 ```
 
-
-
 # Conda
 
 ## conda换源
@@ -182,36 +187,34 @@ ssl_verify: true
 ## pip换源
 
 - 安装
-
+  
   ```
   pip install pqi
   ```
 
 - 列举所有支持的pip源
-
+  
   ```
   pqi ls
   ```
 
 - 换源
-
+  
   ```
   pqi use <name>
   ```
 
 - 添加新的pip源
-
+  
   ```
   pqi add ustc https://mirrors.ustc.edu.cn/pypi/web/simple
   ```
 
 - 移除pip源
-
+  
   ```
   pqi remove pypi
   ```
-
-  
 
 # tensorflow 部署
 
@@ -281,3 +284,24 @@ nvcc -V
 
 ### 5. pip 或者 conda安装tensorflow
 
+# 树莓派安装dlib
+
+1. 安装相关依赖
+
+```
+# for macOS
+brew install cmake
+brew install boost
+brew install boost-python --with-python3
+
+# for Ubuntu
+sudo apt-get install build-essential cmake
+sudo apt-get install libgtk-3-dev
+sudo apt-get install libboost-all-dev
+```
+
+2. 安装dlib
+
+```
+pip install dlib
+```
